@@ -1,0 +1,34 @@
+===========================================================
+                     BIBLIOTECA - 29/05
+===========================================================
+
+CREATE DATABASE bibliotecaa;
+USE DATABASE biblioteca;
+
+SHOW TABLES;
+
+CREATE TABLE livro (
+    idlivro int primary key auto_increment,
+    titulo varchar(255),
+    qtdepaginas int,
+    genero varchar(255),
+    autor varchar(255));
+DESCRIBE ;
+
+CREATE TABLE  (
+    id* int PRIMARY KEY AUTO_INCREMENT,
+    FOREIGN KEY () REFERENCES ());
+DESCRIBE ;
+    
+CREATE TABLE  (
+    id* int PRIMARY KEY AUTO_INCREMENT,
+    FOREIGN KEY () REFERENCES ());
+DESCRIBE ;
+    
+SHOW TABLES;
+
+DROP TABLE *;
+
+
+
+
