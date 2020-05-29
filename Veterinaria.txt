@@ -7,12 +7,12 @@ USE DATABASE veterinaria;
 
 CREATE TABLE dono (
     codDono int PRIMARY KEY AUTO_INCREMENT,
-    rg varchar(20),
-    email varchar(255),
+    rg varchar(20) UNIQUE,
+    email varchar(255) UNIQUE,
     nome varchar(255),
     cllr varchar(20),
     telefone varchar(20),
-    cpf varchar(20),
+    cpf varchar(20) UNIQUE,
     logradouro varchar(255),
     num varchar(20),
     complemento varchar(255),
@@ -23,21 +23,21 @@ CREATE TABLE dono (
 );
 CREATE TABLE atendente (
     codAtendente int PRIMARY KEY AUTO_INCREMENT,
-    cpf varchar(20),
+    cpf varchar(20) UNIQUE,
     nome varchar(255),
-    email varchar(255),
-    rg varchar(20),
+    email varchar(255) UNIQUE,
+    rg varchar(20) UNIQUE,
     telefone varchar(20),
     cllr varchar(20)
 );
 CREATE TABLE veterinario (
     codVet int PRIMARY KEY AUTO_INCREMENT,
-    crnv varchar(100),
-    email varchar(255),
+    crnv varchar(100) UNIQUE,
+    email varchar(255) UNIQUE,
     nome varchar(255),
     cllr varchar(20),
     telefone varchar(20),
-    cpf varchar(20),
+    cpf varchar(20) UNIQUE,
     logradouro varchar(255),
     num varchar(20),
     complemento varchar(255),
@@ -70,3 +70,11 @@ CREATE TABLE consulta (
     FOREIGN KEY(codAtendente) REFERENCES atendente (codAtendente),
     FOREIGN KEY(codVet) REFERENCES veterinario (codVet)
 );
+
+SHOW TABLES;
+
+DESCRIBE dono;
+DESCRIBE atendente;
+DESCRIBE veterinario;
+DESCRIBE animal;
+DESCRIBE consulta;
