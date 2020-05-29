@@ -1,0 +1,49 @@
+===========================================================
+                      FARMÁCIA - 29/05
+===========================================================
+
+CREATE DATABASE farmacia;
+USE DATABASE farmacia;
+
+CREATE TABLE produto (
+    codProduto int PRIMARY KEY AUTO_INCREMENT,
+    preco varchar(255),
+    nome varchar(255),
+    qtde varchar(255),
+    fabricante varchar(255),
+    generico varchar(255)
+);
+CREATE TABLE compra_venda (
+    codCompra_Venda int PRIMARY KEY AUTO_INCREMENT,
+    cpf varchar(20) UNIQUE,
+    hora varchar(20),
+    total varchar(255),
+    data date,
+    codAtendente int,
+    FOREIGN KEY(codAtendente) REFERENCES caixa (codAtendente)
+);
+CREATE TABLE caixa (
+    codAtendente int PRIMARY KEY AUTO_INCREMENT,
+    nome varchar(255),
+    rg varchar(20) UNIQUE,
+    cpf varchar(20) UNIQUE,
+    salario varchar(255),
+    email varchar(255) UNIQUE,
+    telefone varchar(20),
+    cllr varchar(20)
+);
+CREATE TABLE contem_itensCompra (
+    codCompra_Venda int,
+    codProduto int,
+    totalUnit varchar(255),
+    qtde varchar(255),
+    FOREIGN KEY(codProduto) REFERENCES produto (codProduto),
+    FOREIGN KEY(codCompra_Venda) REFERENCES compra_venda (codCompra_Venda)
+);
+
+SHOW TABLES;
+
+DESCRIBE produto;
+DESCRIBE compra_venda;
+DESCRIBE caixa;
+DESCRIBE contem_itensCompra;
