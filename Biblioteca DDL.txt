@@ -1,0 +1,109 @@
+===========================================================
+                     BIBLIOTECA - 29/05
+===========================================================
+
+CREATE DATABASE biblioteca;
+USE DATABASE biblioteca;
+
+CREATE TABLE cliente (
+    ra int PRIMARY KEY AUTO_INCREMENT,
+    data_nasci date,
+    cpf varchar(20) UNIQUE,
+    telefone varchar(15),
+    email varchar(255) UNIQUE,
+    nome varchar(255),
+    turma varchar(255)
+);
+CREATE TABLE livro (
+    codLivro int PRIMARY KEY AUTO_INCREMENT,
+    titulo varchar(255),
+    editora varchar(255),
+    autor varchar(255),
+    genero varchar(255)
+);
+CREATE TABLE bibliotecario (
+    codFunc int PRIMARY KEY AUTO_INCREMENT,
+    telefone varchar(15),
+    email varchar(255) UNIQUE,
+    nome varchar(255),
+    cpf varchar(20) UNIQUE,
+    rg varchar(20) UNIQUE,
+    dataNasci date,
+    logradouro varchar(255),
+    num int,
+    complemento varchar(255),
+    bairro varchar(255),
+    cidade varchar(255),
+    uf char(2),
+    cep varchar(15)
+);
+CREATE TABLE emprestimo_devolucao (
+    codEmpresta int PRIMARY KEY AUTO_INCREMENT,
+    data_devolve date,
+    data_empresta date,
+    ra int,
+    codFunc int,
+    codLivro int,
+    FOREIGN KEY(ra) REFERENCES cliente (ra),
+    FOREIGN KEY(codFunc) REFERENCES bibliotecario (codFunc),
+    FOREIGN KEY(codLivro) REFERENCES livro (codLivro)
+);
+
+SHOW TABLES;
+
+DESCRIBE cliente;
+DESCRIBE livro;
+DESCRIBE bibliotecario;
+DESCRIBE emprestimo_devolucao;
+
+ALTER TABLE livro ADD COLUMN qntd_pag varchar(255);
+
+//adicionar 10 clientes cadastrados, 10 empréstimos, 3 bibliotecarios
+
+INSERT INTO livro (titulo, editora, autor, genero, qntd_pag) VALUES
+	('O Diário de Nisha','Darkside','Veera Hirandani','ficção', '288'),
+	('Bird Box','Intrinseca', 'Josh Malerman', 'horror e ficção','273'),
+	('Destino','Objetiva Ltda','Ally Condie','ficção', '240'),
+    ('Travessia','Objetiva Ltda','Ally Condie','romance', '276'),
+	('As Crônicas de Nárnia','WMF Martins Fontes','C. S. Lewis','fantasia', '1187'),
+	('Medicina em Suas Mãos','Grupo Natural e Saúde','Hayuri Okuma','medicina, ciências biológicas e naturais', '536'),
+	('Medicina Mitos e Verdades','CIP','Carla Leonel','medicina, ciências biológicas e naturais', '250'),
+	('O Caçador de Pipas','Nova Fronteira','Khaled Hosseini','romance', '366'),
+	('O Monge e o Executivo Uma História Sobre a Essência da Liderança','Sextante','James C. Hunter','autoajuda', '133'),
+	('Estruturas Gramaticais do Alemão Moderno','E.P.U. e EDUSP','Marion Fleischer e Erwin Theodor Rosenthal','educação', '145'),
+	('Fundamentos da Matemática Elementar','Atual Editora','Gelson Iezzi','educação', '273'),
+    ('Praticando Matemática 7ª Série', 'Editora do Brasil S/A', 'Alvaro Andrini', 'educação', '223'),
+    ('O Pequeno Príncipe', 'Editora Escala', 'Antoine de Saint-Exupéry', 'fábula, literatura infantil, ficção especulativa e fantasia', '96'),
+    ('Arte da Guerra', 'Golden Books', 'Sun Tzu', 'biografia e autoajuda', '170'),
+    ('Um Gato de Rua Chamado BoB', 'Novo Conceito', 'James Bowen', 'biografia e autoajuda', '217'),
+    ('Por Lugares Incríveis', 'Seguinte', 'Jennifer Niven', 'ficção juvenil e romance', '323');
+
+INSERT INTO cliente (nome, cpf, data_nasci, telefone, email, turma) VALUES
+    ('', '', '', '', '', ''),
+    ('', '', '', '', '', ''),
+    ('', '', '', '', '', ''),
+    ('', '', '', '', '', ''),
+    ('', '', '', '', '', ''),
+    ('', '', '', '', '', ''),
+    ('', '', '', '', '', ''),
+    ('', '', '', '', '', ''),
+    ('', '', '', '', '', ''),
+    ('', '', '', '', '', '');
+
+INSERT INTO bibliotecario (nome, cpf, rg, dataNasci, telefone, email, uf, cidade, bairro, cep, num, complemento) VALUES
+    ('', '', '', '', '', '', '', '', '', '', '', '', ''),
+    ('', '', '', '', '', '', '', '', '', '', '', '', ''),
+    ('', '', '', '', '', '', '', '', '', '', '', '', '');
+
+INSERT INTO emprestimo_devolucao (ra, codFunc, codLivro, data_empresta, data_devolve) VALUES
+    ('', '', '', '', ''),
+    ('', '', '', '', ''),
+    ('', '', '', '', ''),
+    ('', '', '', '', ''),
+    ('', '', '', '', ''),
+    ('', '', '', '', ''),
+    ('', '', '', '', ''),
+    ('', '', '', '', ''),
+    ('', '', '', '', ''),
+    ('', '', '', '', '');
+
