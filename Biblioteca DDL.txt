@@ -58,8 +58,6 @@ DESCRIBE emprestimo_devolucao;
 
 ALTER TABLE livro ADD COLUMN qntd_pag varchar(255);
 
-//adicionar 10 empréstimos
-
 INSERT INTO livro (titulo, editora, autor, genero, qntd_pag) VALUES
 	('O Diário de Nisha','Darkside','Veera Hirandani','ficção', '288'),
 	('Bird Box','Intrinseca', 'Josh Malerman', 'horror e ficção','273'),
