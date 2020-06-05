@@ -1,12 +1,15 @@
 # MySQL
-#### Scripts com MySQL no PhpMyAdmin
+#### Scripts MySQL
  - DDL
  - DML
  - DQL
  
+#### Desenvolvido no
+- [x] PhpMyAdmin
+- [ ] Prompt
+ 
 #### Alguns dos comandos utilizados: 
  
-
 ```
 CREATE DATABASE ?; 
 CREATE TABLE ? (...); 
