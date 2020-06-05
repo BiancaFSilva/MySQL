@@ -9,8 +9,8 @@
 
 ```
 CREATE DATABASE ?; 
-CREATE TABLE ? (parametros); 
-INSERT INTO ? (parametros) VALUES (),();
+CREATE TABLE ? (...); 
+INSERT INTO ? (...) VALUES (...),(...);
 UPDATE
 ``` 
 
