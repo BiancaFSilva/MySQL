@@ -104,3 +104,22 @@ INSERT INTO emprestimo_devolucao (ra, codFunc, codLivro, data_empresta, data_dev
     (10, 1, 14, '2020/09/19', '2020/10/20'),
     (1, 2, 5, '2018/11/08', '2018/11/30'),
     (6, 1, 5, '2020/01/12', '2020/02/07');
+
+ALTER TABLE livro ADD COLUMN exemplares int;
+
+UPDATE livro SET exemplares = 1  WHERE codLivro = 1;
+UPDATE livro SET exemplares = 1  WHERE codLivro = 2;
+UPDATE livro SET exemplares = 3  WHERE codLivro = 3;
+UPDATE livro SET exemplares = 2  WHERE codLivro = 4;
+UPDATE livro SET exemplares = 3  WHERE codLivro = 5;
+UPDATE livro SET exemplares = 7  WHERE codLivro = 6;
+UPDATE livro SET exemplares = 6  WHERE codLivro = 7;
+UPDATE livro SET exemplares = 2  WHERE codLivro = 8;
+UPDATE livro SET exemplares = 10  WHERE codLivro = 9;
+UPDATE livro SET exemplares = 2  WHERE codLivro = 10;
+UPDATE livro SET exemplares = 15  WHERE codLivro = 11;
+UPDATE livro SET exemplares = 18  WHERE codLivro = 12;
+UPDATE livro SET exemplares = 8  WHERE codLivro = 13;
+UPDATE livro SET exemplares = 5  WHERE codLivro = 14;
+UPDATE livro SET exemplares = 2  WHERE codLivro = 15;
+UPDATE livro SET exemplares = 2  WHERE codLivro = 16;
