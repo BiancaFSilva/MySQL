@@ -4,9 +4,13 @@
  - DML
  - DQL
  
-``` ```
-CREATE DATABASE ''; <br>
-CREATE TABLE '' (parametros); <br>
-INSERT INTO '' (parametros) VALUES (),(); <br>
-UPDATE 
-``` ```
+#### Alguns dos comandos utilizados: 
+ 
+
+```
+CREATE DATABASE ?; 
+CREATE TABLE ? (parametros); 
+INSERT INTO ? (parametros) VALUES (),();
+UPDATE
+``` 
+
