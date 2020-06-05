@@ -1,0 +1,107 @@
+===========================================================
+                     BIBLIOTECA - 29/05
+===========================================================
+
+CREATE DATABASE biblioteca;
+USE DATABASE biblioteca;
+
+CREATE TABLE cliente (
+    ra int PRIMARY KEY AUTO_INCREMENT,
+    data_nasci date,
+    cpf varchar(20) UNIQUE,
+    telefone varchar(15),
+    email varchar(255) UNIQUE,
+    nome varchar(255),
+    turma varchar(255)
+);
+CREATE TABLE livro (
+    codLivro int PRIMARY KEY AUTO_INCREMENT,
+    titulo varchar(255),
+    editora varchar(255),
+    autor varchar(255),
+    genero varchar(255)
+);
+CREATE TABLE bibliotecario (
+    codFunc int PRIMARY KEY AUTO_INCREMENT,
+    telefone varchar(15),
+    email varchar(255) UNIQUE,
+    nome varchar(255),
+    cpf varchar(20) UNIQUE,
+    rg varchar(20) UNIQUE,
+    dataNasci date,
+    logradouro varchar(255),
+    num int,
+    complemento varchar(255),
+    bairro varchar(255),
+    cidade varchar(255),
+    uf char(2),
+    cep varchar(15)
+);
+CREATE TABLE emprestimo_devolucao (
+    codEmpresta int PRIMARY KEY AUTO_INCREMENT,
+    data_devolve date,
+    data_empresta date,
+    ra int,
+    codFunc int,
+    codLivro int,
+    FOREIGN KEY(ra) REFERENCES cliente (ra),
+    FOREIGN KEY(codFunc) REFERENCES bibliotecario (codFunc),
+    FOREIGN KEY(codLivro) REFERENCES livro (codLivro)
+);
+
+SHOW TABLES;
+
+DESCRIBE cliente;
+DESCRIBE livro;
+DESCRIBE bibliotecario;
+DESCRIBE emprestimo_devolucao;
+
+ALTER TABLE livro ADD COLUMN qntd_pag varchar(255);
+
+INSERT INTO livro (titulo, editora, autor, genero, qntd_pag) VALUES
+	('O Diário de Nisha','Darkside','Veera Hirandani','ficção', '288'),
+	('Bird Box','Intrinseca', 'Josh Malerman', 'horror e ficção','273'),
+	('Destino','Objetiva Ltda','Ally Condie','ficção', '240'),
+    ('Travessia','Objetiva Ltda','Ally Condie','romance', '276'),
+	('As Crônicas de Nárnia','WMF Martins Fontes','C. S. Lewis','fantasia', '1187'),
+	('Medicina em Suas Mãos','Grupo Natural e Saúde','Hayuri Okuma','medicina, ciências biológicas e naturais', '536'),
+	('Medicina Mitos e Verdades','CIP','Carla Leonel','medicina, ciências biológicas e naturais', '250'),
+	('O Caçador de Pipas','Nova Fronteira','Khaled Hosseini','romance', '366'),
+	('O Monge e o Executivo Uma História Sobre a Essência da Liderança','Sextante','James C. Hunter','autoajuda', '133'),
+	('Estruturas Gramaticais do Alemão Moderno','E.P.U. e EDUSP','Marion Fleischer e Erwin Theodor Rosenthal','educação', '145'),
+	('Fundamentos da Matemática Elementar','Atual Editora','Gelson Iezzi','educação', '273'),
+    ('Praticando Matemática 7ª Série', 'Editora do Brasil S/A', 'Alvaro Andrini', 'educação', '223'),
+    ('O Pequeno Príncipe', 'Editora Escala', 'Antoine de Saint-Exupéry', 'fábula, literatura infantil, ficção especulativa e fantasia', '96'),
+    ('Arte da Guerra', 'Golden Books', 'Sun Tzu', 'biografia e autoajuda', '170'),
+    ('Um Gato de Rua Chamado BoB', 'Novo Conceito', 'James Bowen', 'biografia e autoajuda', '217'),
+    ('Por Lugares Incríveis', 'Seguinte', 'Jennifer Niven', 'ficção juvenil e romance', '323');
+
+INSERT INTO cliente (nome, cpf, data_nasci, telefone, email, turma) VALUES
+    ('Bianca', '121.121.121-36', '2004/07/27', '11 1234-5678', 'bianca@email.com', '2-C'),
+    ('Letícia', '343.343.343-30', '2001/05/11', '19 4321-8765', 'letici4@email.com', '3-F'),
+    ('Antonio', '565.565.565-33', '2006/03/08', '15 0246-8102', 'ca.tony@email.com', '9-I'),
+    ('Carlos', '878.878.878-23', '2008/04/14', '15 1357-9113', 'carlao10@email.com', '6-A'),
+    ('Márcia', '909.909.909-54', '2005/10/29', '11 4002-8922', 'marciam@email.com', '1-X'),
+    ('Érica', '321.123.321-06', '2004/02/09', '11 3771-3831', 'eriqinhaa@email.com', '2-C'),
+    ('Wagner', '456.654.456-15', '2003/03/31', '11 4828-7530', 'wagner@email.com', '2-C'),
+    ('Roberto', '987.789.987-24', '2005/08/30', '19 9999-9999', 'ro.beto@email.com', '1-X'),
+    ('Carolina', '741.852.963.-79', '2008/07/11', '11 1327-9510', 'carol@email.com', '6-A'),
+    ('Samuel', '369.852.147-17', '2001/09/08', '12 4812-0090', 'samuka@email.com', '3-F');
+
+INSERT INTO bibliotecario (nome, cpf, rg, dataNasci, telefone, email, uf, cidade) VALUES
+    ('Lidiane', '107.190.658-62', '49.542.611-0', '1979/05/30', '15 4823-5397', 'lidy@email.com', 'SP', 'Mauá'),
+    ('Sorento', '192.168.010-10', '85.624.951-3', '2000/11/07', '19 1236-4579', 'sirene.sorento@email.com', 'SP', 'São Bernardo do Campo'),
+    ('Anna', '255.255.255-88', '52.986.107-7', '1996/09/10', '11 4474-3010', 'aniuts@email.com', 'SP', 'Ribeirão Pires');
+
+INSERT INTO emprestimo_devolucao (ra, codFunc, codLivro, data_empresta, data_devolve) VALUES
+    (1, 2, 8, '2019/03/19', '2019/03/27'),
+    (7, 3, 6, '2019/05/08', '2019/06/20'),
+    (9, 3, 13, '2020/05/30', '2020/08/12'),
+    (3, 1, 11, '2016/03/10', '2017/02/23'),
+    (5, 2, 8, '2020/08/16', '2020/09/08'),
+    (2, 2, 1, '2019/12/24', '2020/02/05'),
+    (7, 1, 6, '2017/06/24', '2017/07/14'),
+    (10, 1, 14, '2020/09/19', '2020/10/20'),
+    (1, 2, 5, '2018/11/08', '2018/11/30'),
+    (6, 1, 5, '2020/01/12', '2020/02/07');
+
