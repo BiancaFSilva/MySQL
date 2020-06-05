@@ -1,2 +1,5 @@
 # MySQL
-Scripts das aulas de MDBD
+#### Scripts com MySQL no PhpMyAdmin
+ - DDL
+ - DML
+ - DQL
