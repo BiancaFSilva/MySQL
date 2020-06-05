@@ -104,4 +104,3 @@ INSERT INTO emprestimo_devolucao (ra, codFunc, codLivro, data_empresta, data_dev
     (10, 1, 14, '2020/09/19', '2020/10/20'),
     (1, 2, 5, '2018/11/08', '2018/11/30'),
     (6, 1, 5, '2020/01/12', '2020/02/07');
-
