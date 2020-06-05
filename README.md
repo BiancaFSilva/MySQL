@@ -3,3 +3,10 @@
  - DDL
  - DML
  - DQL
+ 
+``` ```
+CREATE DATABASE ''; <br>
+CREATE TABLE '' (parametros); <br>
+INSERT INTO '' (parametros) VALUES (),(); <br>
+UPDATE 
+``` ```
