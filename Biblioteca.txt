@@ -85,7 +85,7 @@ INSERT INTO cliente (nome, cpf, data_nasci, telefone, email, turma) VALUES
     ('Érica', '321.123.321-06', '2004/02/09', '11 3771-3831', 'eriqinhaa@email.com', '2-C'),
     ('Wagner', '456.654.456-15', '2003/03/31', '11 4828-7530', 'wagner@email.com', '2-C'),
     ('Roberto', '987.789.987-24', '2005/08/30', '19 9999-9999', 'ro.beto@email.com', '1-X'),
-    ('Carolina', '741.852.963.-79', '2008/07/11', '11 1327-9510', 'carol@email.com', '6-A'),
+    ('Carolina', '741.852.963-79', '2008/07/11', '11 1327-9510', 'carol@email.com', '6-A'),
     ('Samuel', '369.852.147-17', '2001/09/08', '12 4812-0090', 'samuka@email.com', '3-F');
 
 INSERT INTO bibliotecario (nome, cpf, rg, dataNasci, telefone, email, uf, cidade) VALUES
