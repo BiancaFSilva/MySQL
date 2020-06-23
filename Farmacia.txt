@@ -1,5 +1,5 @@
 ===========================================================
-                      FARMÁCIA - 29/05
+                      FARMÁCIA - 19/06
 ===========================================================
 
 CREATE DATABASE farmacia;
@@ -7,36 +7,36 @@ USE DATABASE farmacia;
 
 CREATE TABLE produto (
     codProduto int PRIMARY KEY AUTO_INCREMENT,
-    preco varchar(255),
+    preco decimal(7,2),
     nome varchar(255),
-    qtde varchar(255),
+    qtde int,
     fabricante varchar(255),
-    generico varchar(255)
-);
-CREATE TABLE compra_venda (
-    codCompra_Venda int PRIMARY KEY AUTO_INCREMENT,
-    cpf varchar(20) UNIQUE,
-    hora varchar(20),
-    total varchar(255),
-    data date,
-    codAtendente int,
-    FOREIGN KEY(codAtendente) REFERENCES caixa (codAtendente)
+    generico bit
 );
 CREATE TABLE caixa (
     codAtendente int PRIMARY KEY AUTO_INCREMENT,
     nome varchar(255),
     rg varchar(20) UNIQUE,
     cpf varchar(20) UNIQUE,
-    salario varchar(255),
+    salario decimal(7,2),
     email varchar(255) UNIQUE,
     telefone varchar(20),
     cllr varchar(20)
 );
+CREATE TABLE compra_venda (
+    codCompra_Venda int PRIMARY KEY AUTO_INCREMENT,
+    cpf varchar(20),
+    hora time,
+    total decimal(7,2),
+    data date,
+    codAtendente int,
+    FOREIGN KEY(codAtendente) REFERENCES caixa (codAtendente)
+);
 CREATE TABLE contem_itensCompra (
     codCompra_Venda int,
     codProduto int,
-    totalUnit varchar(255),
-    qtde varchar(255),
+    totalUnit decimal(7,2),
+    qtde int,
     FOREIGN KEY(codProduto) REFERENCES produto (codProduto),
     FOREIGN KEY(codCompra_Venda) REFERENCES compra_venda (codCompra_Venda)
 );
@@ -47,3 +47,25 @@ DESCRIBE produto;
 DESCRIBE compra_venda;
 DESCRIBE caixa;
 DESCRIBE contem_itensCompra;
+
+INSERT INTO caixa (nome, email, rg, cpf, telefone, cllr, salario) VALUES
+	('Isaak', 'isaak@email.com', '85.624.951-3', '369.852.147-17', '12 4812-0090', '12 99869-9561', 1495.00),
+    ('Io', 'io.43ll@email.com', '83.236.408-6', '481.216.202-42', '11 4828-7563', '11 97824-9550', 1495.00);
+
+INSERT INTO produto (nome, fabricante, generico, qtde, preco) VALUES
+    ('Dipirona', 'Bayer', 1, 80, 2.68),
+    ('Loratamed', 'Cimed', 1, 73, 12.99),
+    ('Benegripe', 'Bene', 0, 60, 8.37),
+    ('Sabonete', 'Dove', null, 35, 0.99),
+    ('Decadron', 'Aché', 0, 50, 18,29),
+    ('Cloridrato de Ciprofloxacino', 'Prati-Donaduzzi', 1, 43, 20.47),
+    ('Termômetro', 'Zurich', null, 15, 28.99),
+    ('Hidratante labial', 'Bepantol', null, 90, 15.50);
+
+INSERT INTO compra_venda (codAtendente, cpf, data, hora, total) VALUES
+    (1, '369.121.518-21', '2020-06-19', '09:39:00', ,),
+    (2, '', '2020-05-29', '14:16:28', ,),
+    (2, '', '2019-09-08', '09:39:00', ,),
+    (1, '', '2019-07-27', '09:39:00', ,),
+    (2, '', '2020-02-09', '09:39:00', ,),
+    (1, '', '2019-12-30', '09:39:00', ,);
